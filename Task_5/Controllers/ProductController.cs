@@ -61,7 +61,6 @@ namespace Test1.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
         [HttpPut]
         [Route("putUser/")]
         public ActionResult<User> PutUser(User user)
@@ -76,11 +75,7 @@ namespace Test1.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        
+  
     }
-        
-
-        
-    
+      
 }

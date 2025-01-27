@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Task_5.Models;
 namespace Task_5.Controllers
 {
     public class WeatherController : ControllerBase
@@ -15,7 +15,7 @@ namespace Task_5.Controllers
 
         [HttpGet]
         [Route("weatherforecast")]
-        public IActionResult Post()
+        public IActionResult WeatherForecast()
         {
             var forecast = Enumerable.Range(1, 5).Select(index =>
                 new WeatherForecast(
@@ -28,9 +28,6 @@ namespace Task_5.Controllers
         }
     }
 
-    public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-    {
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
+    
     
 }
