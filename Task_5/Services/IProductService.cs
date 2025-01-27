@@ -10,10 +10,7 @@ namespace Test1.Services
         public List<User> GetUsers();
         public void AddUser(User user);
         public void DeleteUser(int id);
-
         public void PutUser(User user);
-
         public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary);
-
     }
 }
