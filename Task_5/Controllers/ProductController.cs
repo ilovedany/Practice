@@ -38,7 +38,7 @@ namespace Test1.Controllers
             try
             {
                 _productService.AddUser(user);
-                return Ok(user); 
+                return Ok($"Id = {user.Id}"); 
             }
             catch (Exception ex)
             {

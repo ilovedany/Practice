@@ -20,8 +20,11 @@ namespace Test1.Services
         }
         public void AddUser(User user){
             using (var db = new SqlConnection(connectionString)){
-                var sqlQuery = "INSERT INTO Users (Id,Name,Age) VALUES(@Id, @Name, @Age)";
-                db.Execute(sqlQuery,user);
+                var sqlQuery = "INSERT INTO Users (Name,Age) VALUES(@Name, @Age); SELECT SCOPE_IDENTITY()";
+
+                int userId = db.Query<int>(sqlQuery,user).FirstOrDefault();
+              
+                user.Id = userId;
                 
             }
         }
