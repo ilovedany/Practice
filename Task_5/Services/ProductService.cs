@@ -9,17 +9,24 @@ namespace Test1.Services
 {
     public class ProductService : IProductService
     {
-        string connectionString = @"Server=DESKTOP-QR21RPK;Database=Task_5;Trusted_Connection=True;";
+        
+
+        private readonly string _connectionString;
+        public ProductService(string connectionString){
+
+            _connectionString = connectionString;
+        }
+
         public List<User> GetUsers()
         {
-            using (var db = new SqlConnection(connectionString))
+            using (var db = new SqlConnection(_connectionString))
             {
                 return db.Query<User>("SELECT Id, Name, Age FROM Users").ToList();
             }
 
         }
         public void AddUser(User user){
-            using (var db = new SqlConnection(connectionString)){
+            using (var db = new SqlConnection(_connectionString)){
                 var sqlQuery = "INSERT INTO Users (Name,Age) VALUES(@Name, @Age); SELECT SCOPE_IDENTITY()";
 
                 int userId = db.Query<int>(sqlQuery,user).FirstOrDefault();
@@ -30,7 +37,7 @@ namespace Test1.Services
         }
 
         public void DeleteUser(int id){
-            using(var db = new SqlConnection(connectionString)){
+            using(var db = new SqlConnection(_connectionString)){
                 var sqlQuery = "DELETE FROM Users WHERE Id = @Id";
                 db.Execute(sqlQuery,new { id });
 
@@ -38,7 +45,7 @@ namespace Test1.Services
         }
 
         public void PutUser(User user){
-            using(var db = new SqlConnection(connectionString)){
+            using(var db = new SqlConnection(_connectionString)){
                 var sqlQuery = "UPDATE Users SET Name = @Name, Age = @Age WHERE Id = @Id";
                 db.Execute(sqlQuery,user);
 
