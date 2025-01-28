@@ -18,11 +18,11 @@ namespace Test1.Controllers
 
         [HttpGet]
         [Route("getUsers/")]
-        public ActionResult<List<User>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             try
             {
-                var users = _productService.GetUsers(); 
+                var users = await _productService.GetUsersAsync(); 
                 return Ok(users); 
             }
             catch (Exception ex)
