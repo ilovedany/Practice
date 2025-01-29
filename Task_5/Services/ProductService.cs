@@ -9,7 +9,6 @@ namespace Test1.Services
     public class ProductService : IProductService
     {
         
-
         private readonly string _connectionString;
 
         public ProductService(string connectionString){
