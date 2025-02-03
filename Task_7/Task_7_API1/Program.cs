@@ -7,7 +7,7 @@ string connectionString = @"Server=DESKTOP-QR21RPK;Database=Task_5;Trusted_Conne
 IServiceCollection services = builder.Services;
 
 services.AddTransient<IUserService>(provider => new UserService(connectionString));
-services.AddTransient<IUserAdressService>(provider => new UserAdressService(connectionString));
+services.AddTransient<ISpecialistRankService>(provider => new SpecialistRankService(connectionString));
 
 builder.Services.AddControllers();
 
